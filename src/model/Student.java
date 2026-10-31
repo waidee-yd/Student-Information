@@ -1,25 +1,23 @@
 package model;
 
-import java.time.Year;
+import controller.studentController;
 
 public class Student {
 
-    private static int idCounter = 1;
+    public static int idCounter = 1;
 
     protected String last;
     protected String middle;
     protected String first;
 
-    private String studentID;
+    protected String studentID;
 
     public Student() {
 
     }
 
-    public void setID() {
-        Year currYear = Year.now();
-        this.studentID = currYear + " - " +String.format("%05d",idCounter) + " - MN - 0";;
-        idCounter++;
+    public void setID(int method) {
+
     }
 
     public void setLast(String lastName) {

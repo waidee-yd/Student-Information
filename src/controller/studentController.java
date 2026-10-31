@@ -2,14 +2,48 @@ package controller;
 
 import model.Student;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class studentController extends Student {
 
     ArrayList<ArrayList<String>> table = new ArrayList<>();
 
     Scanner input = new Scanner(System.in);
+
+    @Override
+    public void setID(int method) {
+        if (method == 1) {
+            Year currYear = Year.now();
+            this.studentID = currYear + "-" +String.format("%05d",idCounter) + "-MN-0";
+            idCounter++;
+        } else {
+            if (table.isEmpty()) {
+                Year currYear = Year.now();
+                this.studentID = currYear + "-00001-MN-0";
+            } else {
+                ArrayList<String> lastRow = table.getLast();
+
+                String lastID = lastRow.get(3);
+
+                Pattern pattern = Pattern.compile("^\\d{4}\\s*-\\s*(\\d{5})");
+                Matcher matcher = pattern.matcher(lastID);
+
+                if (matcher.find()) {
+                    String counterPart = matcher.group(1);
+                    idCounter = Integer.parseInt(counterPart) + 1;
+                }
+
+                Year currYear = Year.now();
+                this.studentID = currYear + "-" + String.format("%05d", idCounter) + "-MN-0";
+                idCounter++;
+            }
+        }
+
+    }
 
     public void setData() {
         ArrayList<String> row = new ArrayList<>();
@@ -23,7 +57,7 @@ public class studentController extends Student {
         System.out.print("Enter First Name: ");
         this.setFirst(input.nextLine());
 
-        setID();
+        setID(counterHandler.method);
 
         row.add(this.last);
         row.add(this.middle);
@@ -32,14 +66,16 @@ public class studentController extends Student {
 
         table.add(row);
 
-        System.out.println("Student record sucessfullly saved to table!");
+        System.out.println("Student record sucessfully saved to table!");
 
     }
 
+
+
     public void getData() {
-        for (int i = 0; i < table.size(); i++) {
-            for (int j = 0; j < table.get(i).size(); j++) {
-                System.out.print(table.get(i).get(j) + "\t");
+        for (ArrayList<String> strings : table) {
+            for (String string : strings) {
+                System.out.print(string + "\t");
             }
             System.out.println();
         }

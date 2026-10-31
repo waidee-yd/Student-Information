@@ -4,9 +4,9 @@ public class Main {
 
    public static void main(String[] args) {
 
-       consoleApp console = new consoleApp();
+       consoleApp consoleInit = new consoleApp();
 
-       console.start();
+       consoleInit.start();
 
     }
 }
