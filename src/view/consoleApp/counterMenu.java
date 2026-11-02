@@ -1,9 +1,10 @@
-package controller;
+package view.consoleApp;
 
 import java.util.Scanner;
 
-public class counterHandler{
-    public static int method = 1;
+import model.Handler;
+
+public class counterMenu {
 
     Scanner input = new Scanner(System.in);
 
@@ -26,10 +27,10 @@ public class counterHandler{
             case 0:
                 break;
             case 1:
-                method = 1;
+                Handler.method = 1;
                 break;
             case 2:
-                method = 2;
+                Handler.method = 2;
                 break;
             default:
                 System.out.println("Invalid Choice!");

@@ -32,11 +32,6 @@ public class Student {
         this.first = firstName;
     }
 
-    public String getName() {
-
-        return this.last + this.middle + this.first;
-    }
-
     public String getID() {
         return this.studentID;
     }

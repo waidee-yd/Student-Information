@@ -1,9 +1,9 @@
-package view.consoleApp;
+package view.consoleApp.module;
 
-interface action {
+interface Display {
     void display();
-    void exe();
 }
 
-public class console {
+interface Execution {
+    void exe(int choice);
 }

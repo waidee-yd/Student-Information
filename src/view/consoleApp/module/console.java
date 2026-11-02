@@ -2,10 +2,10 @@ package view.consoleApp.module;
 
 import java.util.Scanner;
 
-abstract class Start implements Display, Execution{
+public abstract class console implements Display, Execution{
 
-    Scanner input = new Scanner(System.in);
-    boolean running = true;
+    protected Scanner input = new Scanner(System.in);
+    protected boolean running = true;
 
     public void start() {
         while (running) {

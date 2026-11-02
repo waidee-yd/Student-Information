@@ -1,32 +1,20 @@
 package view.consoleApp;
 
-import java.util.Scanner;
 import controller.studentController;
-import controller.counterHandler;
+import model.Handler;
+import view.consoleApp.module.console;
 
-public class consoleApp {
+public class mainMenu extends console {
 
-    counterHandler counterControl = new counterHandler();
-    Scanner input = new Scanner(System.in);
-    boolean running = true;
-
+    counterMenu counterControl = new counterMenu();
     studentController controller = new studentController();
 
-    public void start() {
-        while (running) {
-            display();
-            int choice = userInput();
-            exe(choice);
-        }
-        input.close();
-    }
-
-    private void display() {
+    public void display() {
         System.out.println("\t== Student Information ==");
         System.out.println("1. Input Record");
         System.out.println("2. View Record");
         System.out.println("3. Search Record");
-        if (counterHandler.method == 1) {
+        if (Handler.method == 1) {
             System.out.println("4. Change Standard Method? (Standard by DEFAULT)");
         } else {
             System.out.println("4. Change Regular Expression Method? (Standard by DEFAULT)");
@@ -36,16 +24,7 @@ public class consoleApp {
 
     }
 
-    private int userInput() {
-        while (!input.hasNextInt()) {
-            System.out.println("Invalid Input! Enter a number.");
-            input.next();
-            display();
-        }
-        return input.nextInt();
-    }
-
-    private void exe(int choice) {
+    public void exe(int choice) {
         switch (choice) {
             case 1:
                 controller.setData();

@@ -1,6 +1,8 @@
 package controller;
 
+import model.Handler;
 import model.Student;
+import view.consoleApp.counterMenu;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class studentController extends Student {
             } else {
                 ArrayList<String> lastRow = table.getLast();
 
-                String lastID = lastRow.get(3);
+                String lastID = lastRow.getFirst();
 
                 Pattern pattern = Pattern.compile("^\\d{4}\\s*-\\s*(\\d{5})");
                 Matcher matcher = pattern.matcher(lastID);
@@ -57,16 +59,16 @@ public class studentController extends Student {
         System.out.print("Enter First Name: ");
         this.setFirst(input.nextLine());
 
-        setID(counterHandler.method);
+        setID(Handler.method);
 
+        row.add(getID());
         row.add(this.last);
         row.add(this.middle);
         row.add(this.first);
-        row.add(getID());
 
         table.add(row);
 
-        System.out.println("Student record sucessfully saved to table!");
+        System.out.println("Student record successfully saved to table!");
 
     }
 
