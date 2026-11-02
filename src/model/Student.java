@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Student {
 
     public static int idCounter = 1;
+    public static ArrayList<ArrayList<String>> table = new ArrayList<>();
 
     protected String last;
     protected String middle;
@@ -14,7 +15,6 @@ public class Student {
 
     protected String studentID;
 
-    public static ArrayList<ArrayList<String>> table = new ArrayList<>();
 
     public Student() {
 

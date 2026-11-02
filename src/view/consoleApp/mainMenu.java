@@ -1,13 +1,19 @@
 package view.consoleApp;
 
+import view.consoleApp.searchMenu;
 import controller.studentController;
 import model.Handler;
 import model.Console;
 
 public class mainMenu extends Console {
 
-    counterMenu counterControl = new counterMenu();
+    searchMenu search = new searchMenu();
+    counterMenu counter = new counterMenu();
     studentController controller = new studentController();
+
+    public mainMenu() {
+
+    }
 
     public void display() {
         System.out.println("\t== Student Information ==");
@@ -33,9 +39,10 @@ public class mainMenu extends Console {
                 controller.getData();
                 break;
             case 3:
+                search.start();
                 break;
             case 4:
-                counterControl.start();
+                counter.start();
                 break;
             case 5:
                 System.out.println("Exiting Program...");
