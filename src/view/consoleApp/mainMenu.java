@@ -2,9 +2,9 @@ package view.consoleApp;
 
 import controller.studentController;
 import model.Handler;
-import view.consoleApp.module.console;
+import model.Console;
 
-public class mainMenu extends console {
+public class mainMenu extends Console {
 
     counterMenu counterControl = new counterMenu();
     studentController controller = new studentController();
@@ -35,7 +35,7 @@ public class mainMenu extends console {
             case 3:
                 break;
             case 4:
-                counterControl.init();
+                counterControl.start();
                 break;
             case 5:
                 System.out.println("Exiting Program...");

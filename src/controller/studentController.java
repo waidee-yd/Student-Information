@@ -2,7 +2,6 @@ package controller;
 
 import model.Handler;
 import model.Student;
-import view.consoleApp.counterMenu;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -11,8 +10,6 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class studentController extends Student {
-
-    ArrayList<ArrayList<String>> table = new ArrayList<>();
 
     Scanner input = new Scanner(System.in);
 
@@ -71,8 +68,6 @@ public class studentController extends Student {
         System.out.println("Student record successfully saved to table!");
 
     }
-
-
 
     public void getData() {
         for (ArrayList<String> strings : table) {

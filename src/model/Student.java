@@ -2,6 +2,8 @@ package model;
 
 import controller.studentController;
 
+import java.util.ArrayList;
+
 public class Student {
 
     public static int idCounter = 1;
@@ -11,6 +13,8 @@ public class Student {
     protected String first;
 
     protected String studentID;
+
+    public static ArrayList<ArrayList<String>> table = new ArrayList<>();
 
     public Student() {
 

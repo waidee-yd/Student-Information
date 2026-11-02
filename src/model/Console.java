@@ -1,11 +1,19 @@
-package view.consoleApp.module;
+package model;
 
 import java.util.Scanner;
 
-public abstract class console implements Display, Execution{
+public abstract class Console {
 
     protected Scanner input = new Scanner(System.in);
     protected boolean running = true;
+
+    protected void display() {
+
+    }
+
+    protected void exe(int a) {
+
+    }
 
     public void start() {
         while (running) {
@@ -16,7 +24,7 @@ public abstract class console implements Display, Execution{
         input.close();
     }
 
-    public int userInput() {
+    protected int userInput() {
         while (!input.hasNextInt()) {
             System.out.println("Invalid Input! Enter a number.");
             input.next();

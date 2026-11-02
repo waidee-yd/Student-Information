@@ -1,20 +1,18 @@
 package view.consoleApp;
 
-import java.util.Scanner;
-
 import model.Handler;
+import model.Console;
 
-public class counterMenu {
+public class counterMenu extends Console {
 
-    Scanner input = new Scanner(System.in);
-
-    public void init() {
+    @Override
+    public void start() {
         display();
         int choice = userInput();
         exe(choice);
     }
 
-    private void display() {
+    protected void display() {
         System.out.println("==Change Method==");
         System.out.println("1. Standard Counter");
         System.out.println("2. Regular Expression Counter");
@@ -22,7 +20,7 @@ public class counterMenu {
         System.out.print("Enter your choice: ");
     }
 
-    private void exe(int choice) {
+    protected void exe(int choice) {
         switch (choice) {
             case 0:
                 break;
@@ -36,15 +34,6 @@ public class counterMenu {
                 System.out.println("Invalid Choice!");
                 break;
         }
-    }
-
-    private int userInput() {
-        while (!input.hasNextInt()) {
-            System.out.println("Invalid Input! Enter a number.");
-            input.next();
-            display();
-        }
-        return input.nextInt();
     }
 
 }
