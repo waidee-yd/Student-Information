@@ -1,5 +1,7 @@
 package view.consoleApp;
 
+import controller.searchControl;
+
 import model.Console;
 
 import java.util.Scanner;
@@ -7,6 +9,8 @@ import java.util.Scanner;
 public class searchMenu extends Console {
 
     Scanner scanner = new Scanner(System.in);
+
+    searchControl control = new searchControl();
 
     public searchMenu() {
 
@@ -16,6 +20,7 @@ public class searchMenu extends Console {
     public void start() {
         display();
         String search = searchInput();
+        control.searching(search);
     }
 
     @Override
@@ -27,8 +32,7 @@ public class searchMenu extends Console {
 
     protected String searchInput() {
         String string = scanner.nextLine().trim();
-        scanner.nextLine();
-        while (!scanner.hasNextLine()) {
+        while (string.isEmpty()) {
             System.out.println("Invalid Input!");
             display();
         }

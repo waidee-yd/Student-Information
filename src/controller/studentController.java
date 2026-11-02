@@ -72,7 +72,7 @@ public class studentController extends Student {
     public void getData() {
         for (ArrayList<String> strings : table) {
             for (String string : strings) {
-                System.out.print(string + "\t");
+                System.out.print(string + " |\t");
             }
             System.out.println();
         }
