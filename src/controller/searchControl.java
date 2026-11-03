@@ -16,7 +16,7 @@ public class searchControl extends Student{
             String middlename = strings.get(2);
             String firstname = strings.get(3);
 
-            if (id.equalsIgnoreCase(search) || lastname.equalsIgnoreCase(lowerString) || middlename.equalsIgnoreCase(lowerString) || firstname.equalsIgnoreCase(lowerString)) {
+            if (id.contains(search) || lastname.equalsIgnoreCase(lowerString) || middlename.equalsIgnoreCase(lowerString) || firstname.equalsIgnoreCase(lowerString)) {
                 System.out.println("Match Found: " + strings);
                 found = true;
             }
