@@ -1,12 +1,20 @@
 package controller;
 
 import model.Student;
+import view.consoleApp.MainMenu;
 
 import java.util.ArrayList;
 
-public class searchControl extends Student{
+public class SearchControl extends Student{
 
     public void searching(String search) {
+
+        MainMenu menu = new MainMenu();
+
+        if (search.equals("0")) {
+            menu.start();
+        }
+
         String lowerString = search.toLowerCase();
         boolean found = false;
 

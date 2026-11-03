@@ -1,18 +1,18 @@
 package view.consoleApp;
 
-import controller.searchControl;
+import controller.SearchControl;
 
 import model.Console;
 
 import java.util.Scanner;
 
-public class searchMenu extends Console {
+public class SearchMenu extends Console {
 
     Scanner scanner = new Scanner(System.in);
 
-    searchControl control = new searchControl();
+    SearchControl control = new SearchControl();
 
-    public searchMenu() {
+    public SearchMenu() {
 
     }
 
@@ -20,6 +20,11 @@ public class searchMenu extends Console {
     public void start() {
         display();
         String search = searchInput();
+
+        if (search.equals("0")) {
+
+        }
+
         control.searching(search);
     }
 

@@ -1,10 +1,10 @@
-import view.consoleApp.mainMenu;
+import view.consoleApp.MainMenu;
 
 public class Main {
 
    public static void main(String[] args) {
 
-       mainMenu consoleInit = new mainMenu();
+       MainMenu consoleInit = new MainMenu();
 
        consoleInit.start();
 

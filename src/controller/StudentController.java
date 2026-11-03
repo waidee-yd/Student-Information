@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class studentController extends Student {
+public class StudentController extends Student {
 
     Scanner input = new Scanner(System.in);
 

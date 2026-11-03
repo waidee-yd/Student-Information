@@ -1,7 +1,5 @@
 package model;
 
-import controller.studentController;
-
 import java.util.ArrayList;
 
 public class Student {

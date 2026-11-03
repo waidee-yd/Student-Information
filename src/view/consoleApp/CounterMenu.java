@@ -3,7 +3,7 @@ package view.consoleApp;
 import model.Handler;
 import model.Console;
 
-public class counterMenu extends Console {
+public class CounterMenu extends Console {
 
     @Override
     public void start() {
