@@ -16,10 +16,12 @@ public class StudentController extends Student {
     @Override
     public void setID(int method) {
         if (method == 1) {
+            //Standard method of counter
             Year currYear = Year.now();
             this.studentID = currYear + "-" +String.format("%05d",idCounter) + "-MN-0";
             idCounter++;
         } else {
+            //Regular expression method of counter
             if (table.isEmpty()) {
                 Year currYear = Year.now();
                 this.studentID = currYear + "-00001-MN-0";
@@ -44,6 +46,7 @@ public class StudentController extends Student {
 
     }
 
+    //Setting the data in the array
     public void setData() {
         ArrayList<String> row = new ArrayList<>();
 
@@ -69,6 +72,7 @@ public class StudentController extends Student {
 
     }
 
+    //Getting the data from the array
     public void getData() {
         for (ArrayList<String> strings : table) {
             for (String string : strings) {
