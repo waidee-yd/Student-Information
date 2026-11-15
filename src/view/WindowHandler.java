@@ -1,8 +1,9 @@
 package view;
 
-import view.UIHandler.Panels;
+import view.UIHandler.PanelHandler;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class WindowHandler {
 
@@ -14,9 +15,10 @@ public class WindowHandler {
         frameWindow.setSize(1280, 720);
         frameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameWindow.setResizable(false);
+        frameWindow.getContentPane().setBackground(new Color(249, 240, 209));
 
-        //Panels
-        Panels panel = new Panels();
+        //PanelHandler
+        PanelHandler panel = new PanelHandler();
         frameWindow.add(panel);
 
 
