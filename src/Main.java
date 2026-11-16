@@ -1,6 +1,6 @@
 import javax.swing.SwingUtilities;
 
-import view.WindowHandler;
+import view.Window;
 
 public class Main {
 
@@ -9,7 +9,7 @@ public class Main {
        SwingUtilities.invokeLater(new Runnable() {
            @Override
            public void run() {
-               new WindowHandler();
+               new Window();
 
            }
        });

@@ -1,13 +1,11 @@
 package view;
 
-import view.UIHandler.PanelHandler;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class WindowHandler {
+public class Window {
 
-    public WindowHandler() {
+    public Window() {
 
         // Window Frame
         JFrame frameWindow = new JFrame("Student Information");
@@ -17,8 +15,8 @@ public class WindowHandler {
         frameWindow.setResizable(false);
         frameWindow.getContentPane().setBackground(new Color(249, 240, 209));
 
-        //PanelHandler
-        PanelHandler panel = new PanelHandler();
+        //Panel
+        Panel panel = new Panel();
         frameWindow.add(panel);
 
 

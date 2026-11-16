@@ -3,12 +3,12 @@ package view.UIHandler;
 import javax.swing.*;
 import java.awt.*;
 
-public class TextHandler extends JPanel {
+public class TitleHandler extends JPanel {
 
-    JLabel titleHeader = new JLabel("Student Information");
-    JLabel recordHeader = new JLabel("Records");
+    public JLabel titleHeader = new JLabel("Student Information");
+    public JLabel recordHeader = new JLabel("Records");
 
-    public TextHandler() {
+    public TitleHandler() {
         title();
         record();
     }

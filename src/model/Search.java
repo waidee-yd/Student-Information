@@ -1,10 +1,8 @@
-package controller;
-
-import model.Student;
+package model;
 
 import java.util.ArrayList;
 
-public class SearchControl extends Student{
+public class Search extends Student{
 
     //Searching Algorithm
     public void searching(String search) {
