@@ -2,9 +2,9 @@ package view.consoleApp;
 
 import controller.StudentController;
 import model.Handler;
-import model.Console;
+import controller.ConsoleController;
 
-public class MainMenu extends Console {
+public class MainMenu extends ConsoleController {
 
     SearchMenu search = new SearchMenu();
     CounterMenu counter = new CounterMenu();

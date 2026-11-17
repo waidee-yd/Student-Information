@@ -1,11 +1,10 @@
-package controller;
+package model;
 
-import model.Student;
 import view.consoleApp.MainMenu;
 
 import java.util.ArrayList;
 
-public class SearchControl extends Student{
+public class Search extends Student{
 
     public void searching(String search) {
 

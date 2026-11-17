@@ -1,9 +1,9 @@
 package view.consoleApp;
 
 import model.Handler;
-import model.Console;
+import controller.ConsoleController;
 
-public class CounterMenu extends Console {
+public class CounterMenu extends ConsoleController {
 
     @Override
     public void start() {

@@ -1,8 +1,8 @@
-package model;
+package controller;
 
 import java.util.Scanner;
 
-public abstract class Console {
+public abstract class ConsoleController {
 
     protected Scanner input = new Scanner(System.in);
     protected boolean running = true;

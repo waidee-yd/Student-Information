@@ -1,16 +1,16 @@
 package view.consoleApp;
 
-import controller.SearchControl;
+import model.Search;
 
-import model.Console;
+import controller.ConsoleController;
 
 import java.util.Scanner;
 
-public class SearchMenu extends Console {
+public class SearchMenu extends ConsoleController {
 
     Scanner scanner = new Scanner(System.in);
 
-    SearchControl control = new SearchControl();
+    Search control = new Search();
 
     public SearchMenu() {
 
