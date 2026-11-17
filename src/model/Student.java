@@ -75,11 +75,11 @@ public class Student {
             idCounter++;
         } else {
             //Regular expression method of counter
-            if (StudentDataAccess.studentList.isEmpty()) {
+            if (studentDataAccess.getAllStudent().isEmpty()) {
                 Year currYear = Year.now();
                 this.studentID = currYear + "-00001-MN-0";
             } else {
-                Student lastStudent = studentsList.get(studentsList.size() - 1);
+                Student lastStudent = studentsList.getLast();
                 String lastID = lastStudent.getStudentID();
 
                 Pattern pattern = Pattern.compile("^\\d{4}\\s*-\\s*(\\d{5})");

@@ -1,5 +1,6 @@
 package view.UIHandler;
 
+import controller.StudentController;
 import model.Student;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 public class InputHandler extends JPanel implements ActionListener {
 
     Student student = new Student();
+    StudentController controller = new StudentController();
 
     String[] courseList = student.courseList;
 
@@ -122,10 +124,21 @@ public class InputHandler extends JPanel implements ActionListener {
         add(save);
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        String selectedCourse = (String) courseDropdown.getSelectedItem();
+
         if (e.getSource() == save) {
-            System.out.println("Saved!");
+            if (fninputField.getText().isEmpty() || mninputField.getText().isEmpty() || fninputField.getText().isEmpty() || courseDropdown.getSelectedItem() == "-- Select Course --" || eminputField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Must Contain Input!", "Warning!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                controller.setData(lninputField.getText(), fninputField.getText(), mninputField.getText(), selectedCourse, eminputField.getText());
+
+                System.out.println("Saved!");
+            }
+
         }
     }
 }

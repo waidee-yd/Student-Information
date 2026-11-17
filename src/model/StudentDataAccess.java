@@ -5,9 +5,8 @@ import java.util.ArrayList;
 
 public class StudentDataAccess {
 
-    public static ArrayList<Student> studentList = new ArrayList<>();
-
     public ArrayList<Student> getAllStudent() {
+        ArrayList<Student> studentList = new ArrayList<>();
         String query = "SELECT * FROM students";
 
         try (Connection connection = DatabaseConnection.getConnection(); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(query)) {

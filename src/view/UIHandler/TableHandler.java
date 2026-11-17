@@ -10,17 +10,16 @@ import java.awt.*;
 
 public class TableHandler extends JPanel {
 
+    DefaultTableModel model = Table.createModel();
+    JTable dataTable = new JTable(model);
+
     public TableHandler() {
         setLayout(null);
         setOpaque(false);
 
-        DefaultTableModel model = Table.createModel();
-
-        JTable dataTable = new JTable(model);
-
         dataTable.getTableHeader().setResizingAllowed(false);
         dataTable.getTableHeader().setReorderingAllowed(false);
-        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         dataTable.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         dataTable.setRowHeight(25);
 
@@ -39,7 +38,13 @@ public class TableHandler extends JPanel {
         header.setForeground(new Color(60, 42, 33));
         header.setFont(new Font("Segoe UI", Font.BOLD, 14));
         header.setPreferredSize(new Dimension(header.getWidth(), 40));
-        
+
+        adjustColumnWidth();
+        add(scrollPane);
+    }
+
+    public void adjustColumnWidth() {
+        JTableHeader header = dataTable.getTableHeader();
         for (int i = 0; i < dataTable.getColumnCount(); i++) {
             TableColumn column = dataTable.getColumnModel().getColumn(i);
             int prefWidth = 100;
@@ -55,7 +60,11 @@ public class TableHandler extends JPanel {
             column.setPreferredWidth(prefWidth);
 
         }
-
-        add(scrollPane);
     }
+
+    public void RefreshTable() {
+        dataTable.setModel(Table.createModel());
+        adjustColumnWidth();
+    }
+
 }
