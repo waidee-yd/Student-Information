@@ -14,7 +14,7 @@ public class Search extends Student{
         String lowerString = search.toLowerCase();
         boolean found = false;
 
-        for (ArrayList<String> strings : table) {
+        /*for (ArrayList<String> strings : table) {
             //Setting the search only on these tables for faster search
             String id = strings.get(0);
             String lastname = strings.get(1).toLowerCase();
@@ -29,6 +29,6 @@ public class Search extends Student{
 
         if (!found) {
             System.out.println("No Records Found!");
-        }
+        }*/
     }
 }

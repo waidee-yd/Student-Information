@@ -18,11 +18,15 @@ public class TableHandler extends JPanel {
 
         JTable dataTable = new JTable(model);
 
+        dataTable.getTableHeader().setResizingAllowed(false);
+        dataTable.getTableHeader().setReorderingAllowed(false);
+        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         dataTable.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         dataTable.setRowHeight(25);
 
         JScrollPane scrollPane = new JScrollPane(dataTable);
         scrollPane.setBounds(0,0,664,515);
+        scrollPane.getViewport().setOpaque(true);
         scrollPane.getViewport().setBackground(new Color(249,240,209));
         scrollPane.setBackground(new Color(249,240,209));
 
@@ -35,8 +39,7 @@ public class TableHandler extends JPanel {
         header.setForeground(new Color(60, 42, 33));
         header.setFont(new Font("Segoe UI", Font.BOLD, 14));
         header.setPreferredSize(new Dimension(header.getWidth(), 40));
-
-        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
         for (int i = 0; i < dataTable.getColumnCount(); i++) {
             TableColumn column = dataTable.getColumnModel().getColumn(i);
             int prefWidth = 100;
