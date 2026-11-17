@@ -2,6 +2,7 @@ package model;
 
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +20,8 @@ public class Student {
     protected String studentID;
     protected String course;
 
-    protected String[] courseList = {
+    public String[] courseList = {
+            "-- Select Course --",
             "Bachelor of Science in Computer Science",
             "Bachelor of Science in Information Technology",
             "Bachelor of Science in Industrial Engineering",
@@ -32,7 +34,7 @@ public class Student {
 
     //Constructor
     public Student() {
-
+        Arrays.sort(courseList);
     }
 
     //Setters
@@ -109,7 +111,6 @@ public class Student {
     public String getMiddle() { return this.middle; }
     public String getFirst() { return this.first; }
     public String getEmail() { return this.email; }
-    public String getCourse() { return this.course; }
 
     public void getData() {
         for (ArrayList<String> strings : table) {

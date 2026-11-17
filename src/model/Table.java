@@ -10,7 +10,7 @@ public class Table {
         String[] column = {"Student ID", "Last Name", "First Name", "Middle Name", "Course", "Email"};
 
         int size = Student.table.size();
-        Object[][] data = new Object[size][6];
+        /*Object[][] data = new Object[size][6];
 
         for (int i = 0; i < size; i++) {
             ArrayList<String> row = Student.table.get(i);
@@ -21,8 +21,15 @@ public class Table {
             data[i][3] = row.get(3);
             data[i][4] = row.get(4);
             data[i][5] = row.get(5);
-        }
+        }*/
 
-        return new DefaultTableModel(data, column);
+        Object[][] data = {{"2026-00001", "Morado", "Rizaldy Jr.", "Montegrande", "BSCS", "rizaldymoradojr27@gmail.com"}};
+
+        return new DefaultTableModel(data, column) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
     }
 }

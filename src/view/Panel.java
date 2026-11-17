@@ -1,5 +1,7 @@
 package view;
 
+import model.Student;
+import view.UIHandler.InputHandler;
 import view.UIHandler.TableHandler;
 import view.UIHandler.TitleHandler;
 
@@ -8,16 +10,17 @@ import java.awt.*;
 
 public class Panel extends JPanel {
 
-    JPanel InputHandler = new JPanel();
-    JPanel RecordHandler = new JPanel();
+    JPanel Input = new JPanel();
+    JPanel Record = new JPanel();
 
     JPanel InputPanel = new JPanel();
     JPanel RecordPanel = new JPanel();
 
-    JPanel Top = new JPanel();
-
     TitleHandler textHandler = new TitleHandler();
     TableHandler tableHandler = new TableHandler();
+
+    //Text Field
+    InputHandler inputHandler = new InputHandler();
 
     public Panel() {
         setLayout(null);
@@ -26,21 +29,32 @@ public class Panel extends JPanel {
 
         textHandler.titleHeader.setOpaque(false);
         textHandler.recordHeader.setOpaque(false);
-        InputHandler.setLayout(null);
-        RecordHandler.setLayout(null);
-        RecordPanel.setLayout(null);
 
-        textHandler.setBounds(10, 10, 480, 60);
-        textHandler.setBounds(10, 10, 480, 60);
+        inputHandler.fninputField.setOpaque(false);
+        inputHandler.fnlabel.setOpaque(false);
+        inputHandler.mninputField.setOpaque(false);
+        inputHandler.mnlabel.setOpaque(false);
+        inputHandler.lninputField.setOpaque(false);
+        inputHandler.lnlabel.setOpaque(false);
+        inputHandler.clabel.setOpaque(false);
+        inputHandler.courseDropdown.setOpaque(false);
+        inputHandler.eminputField.setOpaque(false);
+        inputHandler.emlabel.setOpaque(false);
+        //inputHandler.save.setOpaque(false);
+
+        Input.setLayout(null);
+        Record.setLayout(null);
+        RecordPanel.setLayout(null);
+        InputPanel.setLayout(null);
 
         //Handler
-        InputHandler.setBackground(new Color(249, 240, 209));
-        InputHandler.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
-        InputHandler.setBounds(10,5, 500,670);
+        Input.setBackground(new Color(249, 240, 209));
+        Input.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
+        Input.setBounds(10,5, 500,670);
 
-        RecordHandler.setBackground(new Color(249, 240, 209));
-        RecordHandler.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
-        RecordHandler.setBounds(535,5,715,670);
+        Record.setBackground(new Color(249, 240, 209));
+        Record.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
+        Record.setBounds(535,5,715,670);
 
         //Panels
         InputPanel.setBackground(new Color(233, 223, 189));
@@ -50,23 +64,30 @@ public class Panel extends JPanel {
         RecordPanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
         RecordPanel.setBounds(25,100,670,520);
 
-        //Record top bar
-        Top.setBackground(new Color(221, 210, 177));
-        Top.setBounds(3,3,664,40);
-
         //Adding to UI
-        InputHandler.add(textHandler.titleHeader);
-        InputHandler.add(InputPanel);
+        Input.add(textHandler.titleHeader);
+        Input.add(InputPanel);
 
-        RecordHandler.add(textHandler.recordHeader);
-        RecordHandler.add(RecordPanel);
+        InputPanel.add(inputHandler.fninputField);
+        InputPanel.add(inputHandler.fnlabel);
+        InputPanel.add(inputHandler.mninputField);
+        InputPanel.add(inputHandler.mnlabel);
+        InputPanel.add(inputHandler.lninputField);
+        InputPanel.add(inputHandler.lnlabel);
+        InputPanel.add(inputHandler.clabel);
+        InputPanel.add(inputHandler.courseDropdown);
+        InputPanel.add(inputHandler.eminputField);
+        InputPanel.add(inputHandler.emlabel);
+        InputPanel.add(inputHandler.save);
 
-        //RecordPanel.add(Top);
+        Record.add(textHandler.recordHeader);
+        Record.add(RecordPanel);
+
         tableHandler.setBounds(3,3,664,515);
         RecordPanel.add(tableHandler);
 
-        add(InputHandler);
-        add(RecordHandler);
+        add(Input);
+        add(Record);
     }
 
 }
