@@ -7,6 +7,12 @@ import view.UIHandler.TableHandler;
 
 public class StudentController {
 
+    private TableHandler tableHandler;
+
+    public StudentController(TableHandler tableHandlers) {
+        this.tableHandler = tableHandlers;
+    }
+
     public StudentController() {
 
     }
@@ -24,8 +30,10 @@ public class StudentController {
 
         StudentDataAccess dataAccess = new StudentDataAccess();
         dataAccess.insertStudent(student);
-        th.RefreshTable();
 
+        if (this.tableHandler != null) {
+            this.tableHandler.RefreshTable();
+        }
     }
 
 }

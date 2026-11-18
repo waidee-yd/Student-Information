@@ -1,6 +1,5 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,10 +9,6 @@ import java.util.regex.Pattern;
 public class Student {
 
     StudentDataAccess studentDataAccess = new StudentDataAccess();
-
-
-    //Data Handler
-    public static int idCounter = 1;
 
     //Data Variable
     protected String studentID;
@@ -68,19 +63,30 @@ public class Student {
         StudentDataAccess dataAccess = new StudentDataAccess();
         ArrayList<Student> studentsList = dataAccess.getAllStudent();
 
+        Student lastStudent = studentsList.getLast();
+        String lastID = lastStudent.getStudentID();
+
+        Year currYear = Year.now();
+
+        int idCounter = 1;
+
         if (method == 1) {
             //Standard method of counter
-            Year currYear = Year.now();
-            this.studentID = currYear + "-" +String.format("%05d",idCounter) + "-MN-0";
-            idCounter++;
+            if (studentDataAccess.getAllStudent().isEmpty()) {
+                System.out.println("Empty!");
+                this.studentID = currYear + "-" + String.format("%05d",idCounter) + "-MN-0";
+            } else {
+                String numPart = lastID.substring(5,10); //2026-00001-MN-0
+                idCounter = Integer.parseInt(numPart) + 1;
+                this.studentID = currYear + "-" + String.format("%05d",idCounter) + "-MN-0";
+                idCounter++;
+            }
+
         } else {
             //Regular expression method of counter
             if (studentDataAccess.getAllStudent().isEmpty()) {
-                Year currYear = Year.now();
                 this.studentID = currYear + "-00001-MN-0";
             } else {
-                Student lastStudent = studentsList.getLast();
-                String lastID = lastStudent.getStudentID();
 
                 Pattern pattern = Pattern.compile("^\\d{4}\\s*-\\s*(\\d{5})");
                 Matcher matcher = pattern.matcher(lastID);
@@ -90,7 +96,6 @@ public class Student {
                     idCounter = Integer.parseInt(counterPart) + 1;
                 }
 
-                Year currYear = Year.now();
                 this.studentID = currYear + "-" + String.format("%05d", idCounter) + "-MN-0";
                 idCounter++;
             }

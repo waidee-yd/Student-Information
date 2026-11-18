@@ -30,7 +30,8 @@ public class InputHandler extends JPanel implements ActionListener {
 
     public JButton save = new JButton();
 
-    public InputHandler() {
+    public InputHandler(StudentController controllers) {
+        this.controller = controllers;
         firstName();
         middleName();
         lastName();
@@ -124,7 +125,13 @@ public class InputHandler extends JPanel implements ActionListener {
         add(save);
     }
 
-
+    public void clearFields() {
+        fninputField.setText("");
+        mninputField.setText("");
+        lninputField.setText("");
+        eminputField.setText("");
+        courseDropdown.setSelectedIndex(0);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -137,6 +144,7 @@ public class InputHandler extends JPanel implements ActionListener {
                 controller.setData(lninputField.getText(), fninputField.getText(), mninputField.getText(), selectedCourse, eminputField.getText());
 
                 System.out.println("Saved!");
+                clearFields();
             }
 
         }

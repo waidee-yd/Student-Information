@@ -1,5 +1,6 @@
 package view;
 
+import controller.StudentController;
 import model.Student;
 import view.UIHandler.InputHandler;
 import view.UIHandler.TableHandler;
@@ -19,8 +20,10 @@ public class Panel extends JPanel {
     TitleHandler textHandler = new TitleHandler();
     TableHandler tableHandler = new TableHandler();
 
+    StudentController controller = new StudentController(tableHandler);
+
     //Text Field
-    InputHandler inputHandler = new InputHandler();
+    InputHandler inputHandler = new InputHandler(controller);
 
     public Panel() {
         setLayout(null);

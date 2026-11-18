@@ -19,7 +19,12 @@ public class TableHandler extends JPanel {
 
         dataTable.getTableHeader().setResizingAllowed(false);
         dataTable.getTableHeader().setReorderingAllowed(false);
-        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        if (dataTable.getRowCount() == 0) {
+            dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        } else {
+            dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        }
+
         dataTable.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         dataTable.setRowHeight(25);
 
