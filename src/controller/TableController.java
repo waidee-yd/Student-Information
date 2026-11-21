@@ -1,10 +1,12 @@
-package model;
+package controller;
 
-import javax.swing.*;
+import model.Student;
+import model.StudentDataAccess;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class Table {
+public class TableController {
 
     public static DefaultTableModel createModel() {
         String[] column = {"Student ID", "Last Name", "First Name", "Middle Name", "Course", "Email"};
@@ -25,8 +27,6 @@ public class Table {
             data[i][4] = row.getCourse();
             data[i][5] = row.getEmail();
         }
-
-        //Object[][] data = {{"2026-00001", "Morado", "Rizaldy Jr.", "Montegrande", "BSCS", "rizaldymoradojr27@gmail.com"}};
 
         return new DefaultTableModel(data, column) {
             @Override

@@ -1,6 +1,7 @@
 package view.UIHandler;
 
-import model.Table;
+import controller.Search;
+import controller.TableController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,7 +11,7 @@ import java.awt.*;
 
 public class TableHandler extends JPanel {
 
-    DefaultTableModel model = Table.createModel();
+    DefaultTableModel model = TableController.createModel();
     JTable dataTable = new JTable(model);
 
     public TableHandler() {
@@ -68,7 +69,18 @@ public class TableHandler extends JPanel {
     }
 
     public void RefreshTable() {
-        dataTable.setModel(Table.createModel());
+        dataTable.setModel(TableController.createModel());
+        adjustColumnWidth();
+    }
+
+    public void setSearchModel() {
+        dataTable.setModel(Search.searchModel());
+
+        if (dataTable.getRowCount() == 0) {
+            dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        } else {
+            dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        }
         adjustColumnWidth();
     }
 

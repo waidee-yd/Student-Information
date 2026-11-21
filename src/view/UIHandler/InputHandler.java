@@ -1,5 +1,6 @@
 package view.UIHandler;
 
+import controller.Search;
 import controller.StudentController;
 import model.Student;
 
@@ -30,6 +31,9 @@ public class InputHandler extends JPanel implements ActionListener {
 
     public JButton save = new JButton();
 
+    public JTextField searchBox = new JTextField();
+    public JButton searchBtn = new JButton();
+
     public InputHandler(StudentController controllers) {
         this.controller = controllers;
         firstName();
@@ -38,6 +42,7 @@ public class InputHandler extends JPanel implements ActionListener {
         course();
         email();
         saveButton();
+        search();
     }
 
     public void firstName() {
@@ -111,6 +116,23 @@ public class InputHandler extends JPanel implements ActionListener {
         add(eminputField);
     }
 
+    public void search() {
+        setLayout(null);
+        setOpaque(false);
+
+        searchBox.setBounds(320,65,275,30);
+        searchBtn.setText("SEARCH");
+        searchBtn.setBounds(600,65,100,25);
+
+        searchBtn.setBackground(new Color(137, 157, 106));
+        searchBtn.setForeground(new Color(247, 254, 214));
+
+        searchBtn.addActionListener(this);
+
+        add(searchBox);
+        add(searchBtn);
+    }
+
     public void saveButton() {
         setLayout(null);
         setOpaque(false);
@@ -147,6 +169,13 @@ public class InputHandler extends JPanel implements ActionListener {
                 clearFields();
             }
 
+        } else if (e.getSource() == searchBtn) {
+            String Text = searchBox.getText().trim();
+            Search s = new Search();
+            TableHandler tableHandler = new TableHandler();
+            searchBox.setText("");
+            s.searching(Text);
+            tableHandler.setSearchModel();
         }
     }
 }

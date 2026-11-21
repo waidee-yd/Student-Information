@@ -63,12 +63,11 @@ public class Student {
         StudentDataAccess dataAccess = new StudentDataAccess();
         ArrayList<Student> studentsList = dataAccess.getAllStudent();
 
-        Student lastStudent = studentsList.getLast();
-        String lastID = lastStudent.getStudentID();
+        int idCounter = 1;
+
+        String lastID = studentsList.isEmpty() ? String.format("%05d", idCounter) : studentsList.getLast().getStudentID();
 
         Year currYear = Year.now();
-
-        int idCounter = 1;
 
         if (method == 1) {
             //Standard method of counter
@@ -81,6 +80,7 @@ public class Student {
                 this.studentID = currYear + "-" + String.format("%05d",idCounter) + "-MN-0";
                 idCounter++;
             }
+            System.out.println("Initiated using standard");
 
         } else {
             //Regular expression method of counter
@@ -99,6 +99,7 @@ public class Student {
                 this.studentID = currYear + "-" + String.format("%05d", idCounter) + "-MN-0";
                 idCounter++;
             }
+            System.out.println("Initiated using regex");
         }
 
     }

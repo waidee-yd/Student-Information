@@ -1,7 +1,6 @@
 package view;
 
 import controller.StudentController;
-import model.Student;
 import view.UIHandler.InputHandler;
 import view.UIHandler.TableHandler;
 import view.UIHandler.TitleHandler;
@@ -43,14 +42,13 @@ public class Panel extends JPanel {
         inputHandler.courseDropdown.setOpaque(false);
         inputHandler.eminputField.setOpaque(false);
         inputHandler.emlabel.setOpaque(false);
-        //inputHandler.save.setOpaque(false);
+        inputHandler.searchBox.setOpaque(false);
 
         Input.setLayout(null);
         Record.setLayout(null);
         RecordPanel.setLayout(null);
         InputPanel.setLayout(null);
 
-        //Handler
         Input.setBackground(new Color(249, 240, 209));
         Input.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
         Input.setBounds(10,5, 500,670);
@@ -85,6 +83,8 @@ public class Panel extends JPanel {
 
         Record.add(textHandler.recordHeader);
         Record.add(RecordPanel);
+        Record.add(inputHandler.searchBtn);
+        Record.add(inputHandler.searchBox);
 
         tableHandler.setBounds(3,3,664,515);
         RecordPanel.add(tableHandler);
