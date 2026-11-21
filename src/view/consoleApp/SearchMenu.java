@@ -1,6 +1,6 @@
 package view.consoleApp;
 
-import model.Search;
+import controller.Search;
 
 import controller.ConsoleController;
 
