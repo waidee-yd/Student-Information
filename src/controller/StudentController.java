@@ -1,18 +1,37 @@
 package controller;
 
-import model.Handler;
 import model.Student;
+import model.StudentDataAccess;
+import view.UIHandler.TableHandler;
 
-import java.time.Year;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+public class StudentController {
 
-public class StudentController extends Student {
+    private TableHandler tableHandler;
 
+    public StudentController(TableHandler tableHandlers) {
+        this.tableHandler = tableHandlers;
+    }
 
+    public StudentController() {
 
+    }
 
+    public void setData(String last, String first, String middle, String course, String email) {
+        Student student = new Student();
+
+        student.generateID(CounterController.getMethod());
+        student.setLast(last);
+        student.setFirst(first);
+        student.setMiddle(middle);
+        student.setCourse(course);
+        student.setEmail(email);
+
+        StudentDataAccess dataAccess = new StudentDataAccess();
+        dataAccess.insertStudent(student);
+
+        if (this.tableHandler != null) {
+            this.tableHandler.RefreshTable();
+        }
+    }
 
 }

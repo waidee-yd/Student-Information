@@ -1,12 +1,18 @@
-import view.consoleApp.MainMenu;
+import javax.swing.SwingUtilities;
+
+import view.Window;
 
 public class Main {
 
    public static void main(String[] args) {
 
-       MainMenu consoleInit = new MainMenu();
+       SwingUtilities.invokeLater(new Runnable() {
+           @Override
+           public void run() {
+               new Window();
 
-       consoleInit.start();
+           }
+       });
 
     }
 }
