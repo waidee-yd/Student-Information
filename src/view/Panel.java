@@ -22,7 +22,7 @@ public class Panel extends JPanel {
     StudentController controller = new StudentController(tableHandler);
 
     //Text Field
-    InputHandler inputHandler = new InputHandler(controller);
+    InputHandler inputHandler = new InputHandler(controller,tableHandler);
 
     public Panel() {
         setLayout(null);

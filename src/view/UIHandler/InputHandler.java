@@ -34,8 +34,11 @@ public class InputHandler extends JPanel implements ActionListener {
     public JTextField searchBox = new JTextField();
     public JButton searchBtn = new JButton();
 
-    public InputHandler(StudentController controllers) {
+    private TableHandler th;
+
+    public InputHandler(StudentController controllers, TableHandler tableHandler) {
         this.controller = controllers;
+        this.th = tableHandler;
         firstName();
         middleName();
         lastName();
@@ -50,7 +53,7 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         fnlabel.setText("First Name:");
-        fnlabel.setFont(new Font("Segoe UI", Font.PLAIN,16));
+        fnlabel.setFont(new Font("Figtree", Font.PLAIN,16));
         fnlabel.setBounds(30,50,100,25);
         fninputField.setBounds(150,50,275,25);
 
@@ -64,7 +67,7 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         mnlabel.setText("Middle Name:");
-        mnlabel.setFont(new Font("Segoe UI", Font.PLAIN,16));
+        mnlabel.setFont(new Font("Figtree", Font.PLAIN,16));
         mnlabel.setBounds(30,100,100,25);
         mninputField.setBounds(150,100,275,25);
 
@@ -77,7 +80,7 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         lnlabel.setText("Last Name:");
-        lnlabel.setFont(new Font("Segoe UI", Font.PLAIN,16));
+        lnlabel.setFont(new Font("Figtree", Font.PLAIN,16));
         lnlabel.setBounds(30,150,100,25);
         lninputField.setBounds(150,150,275,25);
 
@@ -90,11 +93,11 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         clabel.setText("Course:");
-        clabel.setFont(new Font("Segoe UI", Font.PLAIN,16));
+        clabel.setFont(new Font("Figtree", Font.PLAIN,16));
         clabel.setBounds(30,200,100,25);
 
         courseDropdown.setBounds(150,200,275,25);
-        courseDropdown.setFont(new Font("Segoe UI", Font.PLAIN,14));
+        courseDropdown.setFont(new Font("Figtree", Font.PLAIN,14));
         courseDropdown.setBackground(new Color(249, 240, 209));
         courseDropdown.setForeground(new Color(60, 42, 33));
 
@@ -108,7 +111,7 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         emlabel.setText("Email:");
-        emlabel.setFont(new Font("Segoe UI", Font.PLAIN,16));
+        emlabel.setFont(new Font("Figtree", Font.PLAIN,16));
         emlabel.setBounds(30,250,100,25);
         eminputField.setBounds(150,250,275,25);
 
@@ -121,7 +124,9 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         searchBox.setBounds(320,65,275,30);
+        searchBox.setFont(new Font("Figtree", Font.PLAIN,14));
         searchBtn.setText("SEARCH");
+        searchBtn.setFont(new Font("Figtree", Font.PLAIN,12));
         searchBtn.setBounds(600,65,100,25);
 
         searchBtn.setBackground(new Color(137, 157, 106));
@@ -138,7 +143,7 @@ public class InputHandler extends JPanel implements ActionListener {
         setOpaque(false);
 
         save.setText("SAVE TO DATABASE");
-        save.setFont(new Font("Segoe UI", Font.BOLD,24));
+        save.setFont(new Font("Figtree", Font.BOLD,24));
         save.setBounds(30,320,400,40);
         save.setBackground(new Color(137, 157, 106));
         save.setForeground(new Color(247, 254, 214));
@@ -160,7 +165,7 @@ public class InputHandler extends JPanel implements ActionListener {
         String selectedCourse = (String) courseDropdown.getSelectedItem();
 
         if (e.getSource() == save) {
-            if (fninputField.getText().isEmpty() || mninputField.getText().isEmpty() || fninputField.getText().isEmpty() || courseDropdown.getSelectedItem() == "-- Select Course --" || eminputField.getText().isEmpty()) {
+            if (fninputField.getText().isEmpty() || mninputField.getText().isEmpty() || lninputField.getText().isEmpty() || courseDropdown.getSelectedItem() == "-- Select Course --" || eminputField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Must Contain Input!", "Warning!", JOptionPane.WARNING_MESSAGE);
             } else {
                 controller.setData(lninputField.getText(), fninputField.getText(), mninputField.getText(), selectedCourse, eminputField.getText());
@@ -172,10 +177,11 @@ public class InputHandler extends JPanel implements ActionListener {
         } else if (e.getSource() == searchBtn) {
             String Text = searchBox.getText().trim();
             Search s = new Search();
-            TableHandler tableHandler = new TableHandler();
             searchBox.setText("");
             s.searching(Text);
-            tableHandler.setSearchModel();
+            if (th != null) {
+                th.setSearchModel();
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ public class TitleHandler extends JPanel {
         setLayout(null);
         setOpaque(false);
 
-        titleHeader.setFont(new Font("Garamond", Font.BOLD, 32));
+        titleHeader.setFont(new Font("Bricolage Grotesque", Font.BOLD, 32));
         titleHeader.setForeground(Color.black);
         titleHeader.setBounds(20, 20, 400, 40);
 
@@ -28,7 +28,7 @@ public class TitleHandler extends JPanel {
         setLayout(null);
         setOpaque(false);
 
-        recordHeader.setFont(new Font("Garamond", Font.BOLD, 32));
+        recordHeader.setFont(new Font("Bricolage Grotesque", Font.BOLD, 32));
         recordHeader.setForeground(Color.black);
         recordHeader.setBounds(20, 20, 400, 40);
 
