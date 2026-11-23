@@ -8,7 +8,7 @@ import java.nio.file.Path;
 
 public class CounterController {
 
-    private static final Path FILE_PATH = Path.of("counter.bin");
+    private static final Path FILE_PATH = Path.of("src/counter.bin");
 
     public CounterController() {}
 

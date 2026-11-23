@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 public class ThemeSettings {
-    private static final String PATH = "theme.properties";
+    private static final String PATH = "src/theme.properties";
     private static final String DarkMode = "dark.mode";
 
     private final Properties properties = new Properties();

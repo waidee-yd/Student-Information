@@ -23,6 +23,7 @@ public class Window extends JFrame implements ActionListener {
 
     JMenuItem exit = new JMenuItem("Exit");
     JMenuItem settings = new JMenuItem("Settings");
+    JMenuItem aboutItem = new JMenuItem("Project");
 
     JButton confirm = new JButton();
 
@@ -46,9 +47,11 @@ public class Window extends JFrame implements ActionListener {
 
         file.add(exit);
         edit.add(settings);
+        about.add(aboutItem);
 
         settings.addActionListener(this);
         exit.addActionListener(this);
+        aboutItem.addActionListener(this);
 
 
         // Window Frame
@@ -143,6 +146,10 @@ public class Window extends JFrame implements ActionListener {
         settingsTab.setVisible(true);
     }
 
+    private void aboutProj() {
+        JOptionPane.showMessageDialog(this, "A student information database project made by Rizaldy M. Morado Jr. from BSCS 2-5.", "About", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == settings) {
@@ -151,6 +158,11 @@ public class Window extends JFrame implements ActionListener {
 
         if (e.getSource() == exit) {
             System.exit(0);
+        }
+
+        if (e.getSource() == aboutItem) {
+            aboutProj();
+            System.out.println("about");
         }
     }
 }
