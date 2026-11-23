@@ -1,6 +1,7 @@
 package view;
 
 import controller.CounterController;
+import controller.ThemeSettings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class Window extends JFrame implements ActionListener {
 
-    CounterController counterController = new CounterController();
+    ThemeSettings theme = new ThemeSettings();
 
     String[] methods = {"Standard Counter", "Regex Counter"};
     JComboBox<String> methodBox = new JComboBox<>(methods);
@@ -25,6 +26,8 @@ public class Window extends JFrame implements ActionListener {
 
     JRadioButton on = new JRadioButton("On");
     JRadioButton off = new JRadioButton("Off");
+
+    ButtonGroup group = new ButtonGroup();
 
     public Window() {
 
@@ -64,9 +67,13 @@ public class Window extends JFrame implements ActionListener {
         JDialog settingsTab = new JDialog(this, "Settings", true);
         JLabel displayLabel = new JLabel("Dark Mode");
 
-        ButtonGroup group = new ButtonGroup();
         group.add(on);
         group.add(off);
+        if (!theme.isDarkMode()) {
+            group.setSelected(off.getModel(), true);
+        } else {
+            group.setSelected(on.getModel(), true);
+        }
 
         // Settings Tab
         settingsTab.setSize(250,250);
@@ -86,7 +93,7 @@ public class Window extends JFrame implements ActionListener {
 
         displayLabel.setBounds(40,75,100,25);
         on.setBounds(45,85,50,50);
-        off.setBounds(45,105,50,50);
+        off.setBounds(45,110,50,50);
 
         confirm.setText("Confirm & Apply");
         confirm.setBounds(20,160,200,25);
@@ -100,8 +107,15 @@ public class Window extends JFrame implements ActionListener {
             } else {
                 CounterController.setMethod(0);
             }
+
+            if (on.isSelected()) {
+                theme.setDarkMode(true);
+            } else if (off.isSelected()) {
+                theme.setDarkMode(false);
+            }
             settingsTab.dispose();
             System.out.println(CounterController.getMethod());
+            System.out.println(group.getSelection());
         });
 
         methodBox.setOpaque(false);
