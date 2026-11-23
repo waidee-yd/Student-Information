@@ -63,6 +63,7 @@ public class TableHandler extends JPanel {
 
     public void RefreshTable() {
         dataTable.setModel(TableController.createModel());
+        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         adjustColumnWidth();
     }
 

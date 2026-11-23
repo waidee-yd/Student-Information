@@ -157,17 +157,29 @@ public class InputHandler extends JPanel implements ActionListener {
         courseDropdown.setSelectedIndex(0);
     }
 
+    private boolean emailValidation(JTextField email) {
+        if (email == null) {
+            return false;
+        }
+
+        String text = email.getText().trim();
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+        return text.matches(emailRegex);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String selectedCourse = (String) courseDropdown.getSelectedItem();
 
         if (e.getSource() == save) {
-            if (fninputField.getText().isEmpty() || mninputField.getText().isEmpty() || lninputField.getText().isEmpty() || courseDropdown.getSelectedItem() == "-- Select Course --" || eminputField.getText().isEmpty()) {
+            if (fninputField.getText().isEmpty() || mninputField.getText().isEmpty() || lninputField.getText().isEmpty() || courseDropdown.getSelectedItem() == "-- Select Course --" || eminputField.getText().isEmpty() || !emailValidation(eminputField)) {
                 JOptionPane.showMessageDialog(null, "Must Contain Input!", "Warning!", JOptionPane.WARNING_MESSAGE);
             } else {
                 controller.setData(lninputField.getText(), fninputField.getText(), mninputField.getText(), selectedCourse, eminputField.getText());
 
                 System.out.println("Saved!");
+                th.RefreshTable();
                 clearFields();
             }
 
