@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 
 public class Window extends JFrame implements ActionListener {
 
+    Panel panel = new Panel();
+
     ThemeSettings theme = new ThemeSettings();
 
     String[] methods = {"Standard Counter", "Regex Counter"};
@@ -38,6 +40,7 @@ public class Window extends JFrame implements ActionListener {
         menuBar.add(file);
         menuBar.add(edit);
         menuBar.add(about);
+        menuBar.setFont(new Font("Bricolage Grotesque", Font.BOLD, 6));
 
         // Menu Item
 
@@ -55,8 +58,7 @@ public class Window extends JFrame implements ActionListener {
         this.getContentPane().setBackground(new Color(249, 240, 209));
         this.setJMenuBar(menuBar);
 
-        //Panel
-        Panel panel = new Panel();
+        //Pane
         this.add(panel);
 
 
@@ -67,6 +69,8 @@ public class Window extends JFrame implements ActionListener {
         JDialog settingsTab = new JDialog(this, "Settings", true);
         JLabel displayLabel = new JLabel("Dark Mode");
 
+        settingsTab.setResizable(false);
+
         group.add(on);
         group.add(off);
         if (!theme.isDarkMode()) {
@@ -76,27 +80,32 @@ public class Window extends JFrame implements ActionListener {
         }
 
         // Settings Tab
-        settingsTab.setSize(250,250);
+        settingsTab.setSize(250,230);
         settingsTab.setLocationRelativeTo(this);
         settingsTab.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         JPanel settingPanel = new JPanel();
         settingPanel.setLayout(null);
-        settingPanel.setSize(500,250);
+        settingPanel.setSize(250,230);
 
         if (CounterController.getMethod() != 1) {
             methodBox.setSelectedIndex(1);
         } else {
             methodBox.setSelectedIndex(0);
         }
-        methodBox.setBounds(40,40,150,25);
+        methodBox.setBounds(40,30,150,25);
+        methodBox.setFont(new Font("Figtree", Font.BOLD,12));
 
-        displayLabel.setBounds(40,75,100,25);
-        on.setBounds(45,85,50,50);
-        off.setBounds(45,110,50,50);
+        displayLabel.setBounds(40,65,100,25);
+        displayLabel.setFont(new Font("Figtree", Font.BOLD,14));
+        on.setBounds(45,75,50,50);
+        off.setBounds(45,100,50,50);
+        on.setFont(new Font("Figtree", Font.BOLD,12));
+        off.setFont(new Font("Figtree", Font.BOLD,12));
 
         confirm.setText("Confirm & Apply");
-        confirm.setBounds(20,160,200,25);
+        confirm.setBounds(20,150,200,25);
+        confirm.setFont(new Font("Figtree", Font.BOLD,12));
 
         for (ActionListener action : confirm.getActionListeners()) {
             confirm.removeActionListener(action);
@@ -109,13 +118,13 @@ public class Window extends JFrame implements ActionListener {
             }
 
             if (on.isSelected()) {
+                panel.DarkMode();
                 theme.setDarkMode(true);
             } else if (off.isSelected()) {
+                panel.LightMode();
                 theme.setDarkMode(false);
             }
             settingsTab.dispose();
-            System.out.println(CounterController.getMethod());
-            System.out.println(group.getSelection());
         });
 
         methodBox.setOpaque(false);

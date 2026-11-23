@@ -1,6 +1,7 @@
 package view;
 
 import controller.StudentController;
+import controller.ThemeSettings;
 import view.UIHandler.InputHandler;
 import view.UIHandler.TableHandler;
 import view.UIHandler.TitleHandler;
@@ -9,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel {
+
+    ThemeSettings theme = new ThemeSettings();
 
     JPanel Input = new JPanel();
     JPanel Record = new JPanel();
@@ -26,8 +29,6 @@ public class Panel extends JPanel {
 
     public Panel() {
         setLayout(null);
-
-        setBackground(new Color(249, 240, 209));
 
         textHandler.titleHeader.setOpaque(false);
         textHandler.recordHeader.setOpaque(false);
@@ -49,20 +50,20 @@ public class Panel extends JPanel {
         RecordPanel.setLayout(null);
         InputPanel.setLayout(null);
 
-        Input.setBackground(new Color(249, 240, 209));
-        Input.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
-        Input.setBounds(10,5, 500,670);
+        if (theme.isDarkMode()) {
+            DarkMode();
+        } else {
+            LightMode();
+        }
 
-        Record.setBackground(new Color(249, 240, 209));
-        Record.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
-        Record.setBounds(535,5,715,670);
+        Input.setBounds(10,5, 500,630);
+
+
+        Record.setBounds(535,5,715,630);
 
         //Panels
-        InputPanel.setBackground(new Color(233, 223, 189));
         InputPanel.setBounds(25,100,450,470);
 
-        RecordPanel.setBackground(new Color(249, 240, 209));
-        RecordPanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
         RecordPanel.setBounds(25,100,670,520);
 
         //Adding to UI
@@ -91,6 +92,106 @@ public class Panel extends JPanel {
 
         add(Input);
         add(Record);
+    }
+
+    public void DarkMode() {
+        setBackground(new Color(28, 34, 50));
+
+        Input.setBackground(new Color(28, 34, 50));
+        Input.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(74, 81, 91)));
+
+        Record.setBackground(new Color(28, 34, 50));
+        Record.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(74, 81, 91)));
+
+        InputPanel.setBackground(new Color(39, 47, 68));
+
+        RecordPanel.setBackground(new Color(28, 34, 50));
+        RecordPanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(74, 81, 91)));
+
+        tableHandler.scrollPane.getViewport().setBackground(new Color(28, 34, 50));
+        tableHandler.scrollPane.setBackground(new Color(28, 34, 50));
+
+        tableHandler.dataTable.setBackground(new Color(28, 34, 50));
+        tableHandler.dataTable.setForeground(new Color(240, 240, 240));
+        tableHandler.dataTable.setGridColor(new Color(42, 49, 68));
+
+        tableHandler.header.setBackground(new Color(42, 49, 68));
+        tableHandler.header.setForeground(new Color(240, 240, 240));
+
+        inputHandler.courseDropdown.setBackground(new Color(28, 34, 50));
+        inputHandler.courseDropdown.setForeground(new Color(240, 240, 240));
+        inputHandler.searchBox.setForeground(new Color(240, 240, 240));
+        inputHandler.fnlabel.setForeground(new Color(240, 240, 240));
+        inputHandler.mnlabel.setForeground(new Color(240, 240, 240));
+        inputHandler.lnlabel.setForeground(new Color(240, 240, 240));
+        inputHandler.clabel.setForeground(new Color(240, 240, 240));
+        inputHandler.emlabel.setForeground(new Color(240, 240, 240));
+
+        inputHandler.fninputField.setForeground(new Color(240, 240, 240));
+        inputHandler.mninputField.setForeground(new Color(240, 240, 240));
+        inputHandler.lninputField.setForeground(new Color(240, 240, 240));
+        inputHandler.eminputField.setForeground(new Color(240, 240, 240));
+
+        inputHandler.searchBtn.setBackground(new Color(147, 168, 114));
+
+        inputHandler.fninputField.setCaretColor(new Color(240, 240, 240));
+        inputHandler.mninputField.setCaretColor(new Color(240, 240, 240));
+        inputHandler.lninputField.setCaretColor(new Color(240, 240, 240));
+        inputHandler.eminputField.setCaretColor(new Color(240, 240, 240));
+        inputHandler.searchBox.setCaretColor(new Color(240, 240, 240));
+
+        textHandler.titleHeader.setForeground(new Color(240, 240, 240));
+        textHandler.recordHeader.setForeground(new Color(240, 240, 240));
+    }
+
+    public void LightMode() {
+        setBackground(new Color(249, 240, 209));
+
+        Input.setBackground(new Color(249, 240, 209));
+        Input.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
+
+        Record.setBackground(new Color(249, 240, 209));
+        Record.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
+
+        InputPanel.setBackground(new Color(233, 223, 189));
+
+        RecordPanel.setBackground(new Color(249, 240, 209));
+        RecordPanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(204, 194, 167)));
+
+        tableHandler.scrollPane.getViewport().setBackground(new Color(249,240,209));
+        tableHandler.scrollPane.setBackground(new Color(249,240,209));
+
+        tableHandler.dataTable.setBackground(new Color(249, 240, 209));
+        tableHandler.dataTable.setForeground(new Color(60, 42, 33));
+        tableHandler.dataTable.setGridColor(new Color(221, 210, 177));
+
+        tableHandler.header.setBackground(new Color(221, 210, 177));
+        tableHandler.header.setForeground(new Color(60, 42, 33));
+
+        inputHandler.courseDropdown.setBackground(new Color(249, 240, 209));
+        inputHandler.courseDropdown.setForeground(new Color(60, 42, 33));
+        inputHandler.searchBox.setForeground(new Color(60, 42, 33));
+        inputHandler.fnlabel.setForeground(new Color(60, 42, 33));
+        inputHandler.mnlabel.setForeground(new Color(60, 42, 33));
+        inputHandler.lnlabel.setForeground(new Color(60, 42, 33));
+        inputHandler.clabel.setForeground(new Color(60, 42, 33));
+        inputHandler.emlabel.setForeground(new Color(60, 42, 33));
+
+        inputHandler.fninputField.setForeground(new Color(60, 42, 33));
+        inputHandler.mninputField.setForeground(new Color(60, 42, 33));
+        inputHandler.lninputField.setForeground(new Color(60, 42, 33));
+        inputHandler.eminputField.setForeground(new Color(60, 42, 33));
+
+        inputHandler.searchBtn.setBackground(new Color(137, 157, 106));
+
+        inputHandler.fninputField.setCaretColor(new Color(60, 42, 33));
+        inputHandler.mninputField.setCaretColor(new Color(60, 42, 33));
+        inputHandler.lninputField.setCaretColor(new Color(60, 42, 33));
+        inputHandler.eminputField.setCaretColor(new Color(60, 42, 33));
+        inputHandler.searchBox.setCaretColor(new Color(60, 42, 33));
+
+        textHandler.titleHeader.setForeground(new Color(60, 42, 33));
+        textHandler.recordHeader.setForeground(new Color(60, 42, 33));
     }
 
 }

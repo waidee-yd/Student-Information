@@ -12,7 +12,10 @@ import java.awt.*;
 public class TableHandler extends JPanel {
 
     DefaultTableModel model = TableController.createModel();
-    JTable dataTable = new JTable(model);
+    public JTable dataTable = new JTable(model);
+
+    public JScrollPane scrollPane = new JScrollPane(dataTable);
+    public JTableHeader header = dataTable.getTableHeader();
 
     public TableHandler() {
         setLayout(null);
@@ -29,19 +32,9 @@ public class TableHandler extends JPanel {
         dataTable.setFont(new Font("Figtree", Font.PLAIN, 12));
         dataTable.setRowHeight(25);
 
-        JScrollPane scrollPane = new JScrollPane(dataTable);
         scrollPane.setBounds(0,0,664,515);
         scrollPane.getViewport().setOpaque(true);
-        scrollPane.getViewport().setBackground(new Color(249,240,209));
-        scrollPane.setBackground(new Color(249,240,209));
 
-        dataTable.setBackground(new Color(249, 240, 209));
-        dataTable.setForeground(new Color(60, 42, 33));
-        dataTable.setGridColor(new Color(221, 210, 177));
-
-        JTableHeader header = dataTable.getTableHeader();
-        header.setBackground(new Color(221, 210, 177));
-        header.setForeground(new Color(60, 42, 33));
         header.setFont(new Font("Figtree", Font.BOLD, 14));
         header.setPreferredSize(new Dimension(header.getWidth(), 40));
 

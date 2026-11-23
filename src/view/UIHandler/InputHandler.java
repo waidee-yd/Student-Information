@@ -98,8 +98,6 @@ public class InputHandler extends JPanel implements ActionListener {
 
         courseDropdown.setBounds(150,200,275,25);
         courseDropdown.setFont(new Font("Figtree", Font.PLAIN,14));
-        courseDropdown.setBackground(new Color(249, 240, 209));
-        courseDropdown.setForeground(new Color(60, 42, 33));
 
         add(clabel);
         add(courseDropdown);
@@ -126,10 +124,9 @@ public class InputHandler extends JPanel implements ActionListener {
         searchBox.setBounds(320,65,275,30);
         searchBox.setFont(new Font("Figtree", Font.PLAIN,14));
         searchBtn.setText("SEARCH");
-        searchBtn.setFont(new Font("Figtree", Font.PLAIN,12));
+        searchBtn.setFont(new Font("Figtree", Font.BOLD,12));
         searchBtn.setBounds(600,65,100,25);
 
-        searchBtn.setBackground(new Color(137, 157, 106));
         searchBtn.setForeground(new Color(247, 254, 214));
 
         searchBtn.addActionListener(this);
